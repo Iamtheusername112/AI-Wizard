@@ -1,46 +1,21 @@
-import Image from "next/image";
+import { Auth } from "@/component/auth";
+import { Logo } from "@/component/Logo";
+import { auth } from "@clerk/nextjs/server";
 import Link from "next/link";
+import { redirect } from "next/navigation";
 
 export default function Home() {
+  const { userId } = auth();
+
+  if (userId) {
+    redirect("/dashboard");
+  }
   return (
     <div className="flex flex-col min-h-[100dvh]">
-      <header className="px-4 lg:px-6 h-14 flex items-center">
-        <Link
-          href="#"
-          className="flex items-center justify-center"
-          prefetch={false}
-        >
-          <span className="sr-only">Acme Inc</span>
-        </Link>
+      <header className="px-4 mt-5 lg:px-6 h-14 flex items-center">
+        <Logo />
         <nav className="ml-auto hidden lg:flex gap-4 sm:gap-6">
-          <Link
-            href="#"
-            className="text-sm font-medium hover:underline underline-offset-4"
-            prefetch={false}
-          >
-            Features
-          </Link>
-          <Link
-            href="#"
-            className="text-sm font-medium hover:underline underline-offset-4"
-            prefetch={false}
-          >
-            Pricing
-          </Link>
-          <Link
-            href="#"
-            className="text-sm font-medium hover:underline underline-offset-4"
-            prefetch={false}
-          >
-            About
-          </Link>
-          <Link
-            href="#"
-            className="text-sm font-medium hover:underline underline-offset-4"
-            prefetch={false}
-          >
-            Contact
-          </Link>
+          <Auth />
         </nav>
       </header>
       <main className="flex-1">
@@ -50,12 +25,12 @@ export default function Home() {
               <div className="flex flex-col justify-center space-y-4">
                 <div className="space-y-2">
                   <h1 className="text-3xl font-bold tracking-tighter sm:text-5xl xl:text-6xl/none">
-                    The complete platform for building the Web
+                    The complete platform for Generating AI contents
                   </h1>
                   <p className="max-w-[600px] text-muted-foreground md:text-xl">
-                    Give your team the toolkit to stop configuring and start
-                    innovating. Securely build, deploy, and scale the best web
-                    experiences.
+                    Our platform features an intuitive interface designed for
+                    ease of use. With just a few clicks, users can input their
+                    preferences and receive high-quality content in seconds.
                   </p>
                 </div>
                 <Link
