@@ -12,7 +12,7 @@ const museo = MuseoModerno({
 
 export const Logo = () => {
   return (
-    <Link href={"/"} className="flex flex-col items-start">
+    <Link href={"/"} className="flex flex-col items-center">
       <Image src={"/images/logo.svg"} height={50} width={50} alt="logo" />
       <h2 className={cn(museo.className, "text-xl")}>AI Wizard</h2>
     </Link>
